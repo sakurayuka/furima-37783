@@ -4,37 +4,37 @@
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
 | nickname           | string | null: false |
-| email              | string | null: false |
-| password           | string | null: false |
+| email              | string | null: false , unique: true |
+| encrypted_password | string | null: false |
 | first_name         | string | null: false |
 | last_name          | string | null: false |
 | kana_first_name    | string | null: false |
 | kana_last_name     | string | null: false |
-| birthday           | string | null: false |
+| birthday           | date   | null: false |
 
 ### Association
 - has_many : items
-- has_many : purchase _records
+- has_many : trades
 
 ## items テーブル
 
 | Column             | Type         | Options     |
 | ------------------ | ------------ | ----------- |
 | item_name          | string       | null: false |
-| price              | string       | null: false |
+| price              | integer      | null: false |
 | explanation        | text         | null: false |
-| category           | string       | null: false |
-| condition          | string       | null: false |
-| postage_status     | string       | null: false |
-| shipping_area      | string       | null: false |
-| day_to_ship        | string       | null: false |
+| category_id        | integer      | null: false |
+| condition_id       | integer      | null: false |
+| postage_status_id  | integer      | null: false | 
+| pref_id            | integer      | null: false |
+| day_to_ship_id     | integer      | null: false |
 | user               | references   | null: false , foreign_key: true |
 
 ### Association
-- belongs_to : uesr
-- has_one : purchase _records
+- belongs_to : user
+- has_one : trade
 
-## purchase _records テーブル
+## trades テーブル
 
 | Column             | Type         | Options     |
 | ------------------ | ------------ | ----------- |
@@ -42,21 +42,21 @@
 | user               | references   | null: false , foreign_key: true |
 
 ### Association
-- belongs_to : uesrs
-- belongs_to : items
-- has_one : delivary_address
+- belongs_to : user
+- belongs_to : item
+- has_one : address
 
-## delivary_address テーブル
+## address テーブル
 
 | Column             | Type         | Options     |
 | ------------------ | ------------ | ----------- |
-| delivary_post_code | string       | null: false |
-| delivary_pref      | string       | null: false |
-| delivary_city      | string       | null: false |
-| delivary_building  | string       | 
-| delivary_address   | string       | null: false |
-| phone_number       | string       | null: false |
-| user               | references   | null: false , foreign_key: true |
+| post_code          | integer      | null: false |
+| pref_id            | string       | null: false |
+| city_name          | string       | null: false |
+| building_name      | string       | 
+| house_number       | integer      | null: false |
+| phone_number       | integer      | null: false |
+| trade              | references   | null: false , foreign_key: true |
 
 ### Association
-- belongs_to : purchase _records
+- belongs_to : trade
