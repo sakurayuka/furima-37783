@@ -50,12 +50,12 @@
 
 | Column             | Type         | Options     |
 | ------------------ | ------------ | ----------- |
-| post_code          | integer      | null: false |
+| post_code          | string       | null: false |
 | pref_id            | string       | null: false |
 | city_name          | string       | null: false |
 | building_name      | string       | 
-| house_number       | integer      | null: false |
-| phone_number       | integer      | null: false |
+| house_number       | string       | null: false |
+| phone_number       | string       | null: false |
 | trade              | references   | null: false , foreign_key: true |
 
 ### Association
