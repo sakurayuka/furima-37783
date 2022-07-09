@@ -51,7 +51,7 @@
 | Column             | Type         | Options     |
 | ------------------ | ------------ | ----------- |
 | post_code          | string       | null: false |
-| pref_id            | string       | null: false |
+| pref_id            | integer      | null: false |
 | city_name          | string       | null: false |
 | building_name      | string       | 
 | house_number       | string       | null: false |
