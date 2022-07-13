@@ -13,6 +13,6 @@ class User < ApplicationRecord
   password_complexity = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
   validates :password, format: { with: password_complexity }      
   
-  has_many :items
-  has_many :trades
+ # has_many :items
+ # has_many :trades
 end
