@@ -2,7 +2,7 @@ class Item < ApplicationRecord
 
   validates :image, presence: true
   validates :item_name, presence: true
-  validates :price, presence: true, format: { with: /\A[0-9]+\z/ }
+  validates :price, presence: true
   validates :price, numericality:{only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999} 
   validates :explanation, presence: true
   validates :category_id, :condition_id, :postage_status_id, :pref_id, :day_to_ship_id, numericality: { other_than: 1 , message: "can't be blank"}
