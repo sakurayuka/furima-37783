@@ -1,6 +1,6 @@
 class TradesController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
-  before_action :own_item, only: [:pay_item, :index, :create, :move_to_index, :trade_present]
+  before_action :own_item, only: [:index, :create]
   before_action :move_to_index, only: [:index, :create]
   before_action :trade_present, only: [:index, :create]
   

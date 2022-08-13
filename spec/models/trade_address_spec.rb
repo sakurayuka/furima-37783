@@ -25,6 +25,16 @@ RSpec.describe TradeAddress, type: :model do
         @trade_address.valid?
         expect(@trade_address.errors.full_messages).to include "Token can't be blank"
       end
+      it 'user_idが空だと保存できないこと' do
+        @trade_address.user_id = ''
+        @trade_address.valid?
+        expect(@trade_address.errors.full_messages).to include "User can't be blank"
+      end
+      it 'item_idが空だと保存できないこと' do
+        @trade_address.item_id = ''
+        @trade_address.valid?
+        expect(@trade_address.errors.full_messages).to include "Item can't be blank"
+      end      
       it 'post_codeが空だと保存できないこと' do
         @trade_address.post_code = ''
         @trade_address.valid?
@@ -67,6 +77,11 @@ RSpec.describe TradeAddress, type: :model do
       end
       it 'phone_numberがハイフンを含むと保存できないこと' do
         @trade_address.phone_number = '123-2222-23'
+        @trade_address.valid?
+        expect(@trade_address.errors.full_messages).to include "Phone number is invalid"
+      end
+      it 'phone_numberが11桁以上だと保存できないこと' do
+        @trade_address.phone_number = '1111111111111'
         @trade_address.valid?
         expect(@trade_address.errors.full_messages).to include "Phone number is invalid"
       end
