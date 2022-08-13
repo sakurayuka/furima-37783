@@ -14,5 +14,5 @@ class User < ApplicationRecord
   validates :password, format: { with: password_complexity }      
   
  has_many :items
- # has_many :trades
+ has_many :trades
 end
